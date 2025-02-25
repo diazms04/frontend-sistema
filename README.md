@@ -1,27 +1,49 @@
-# Frontend
+# 📌 Frontend - Sistema de Transacciones
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.14.
+Sistema de transacciones desarrollado con **Angular**, estructurado con componentes reutilizables
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 📁 Estructura del Proyecto
 
-## Code scaffolding
+```
+/frontend
+│── /src
+│   ├── /app
+│   │   ├── /components    # Componentes reutilizables
+│   │   ├── /services      # Servicios para consumir API
+│   │   ├── app.module.ts  # Módulo principal de Angular
+│   ├── index.html         # Página principal del proyecto
+│── angular.json           # Configuración de Angular
+│── package.json           # Dependencias del proyecto
+│── README.md              # Documentación del frontend
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
 
-## Build
+El proyecto esta consumiendo la base de datos de producción
+Si se desea correr con la base de datos local hay que hacer lo siguiente
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+En services/transactions.service.ts hay que descomentar la primera linea y comentar la segunda
+```
+1. // private apiUrl = 'http://localhost:5500/api/transactions'; // url api local
+  
+2. private apiUrl = 'https://backend-sistema.onrender.com/api/transactions'; // url api desplegada
 
-## Running unit tests
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Lo mismo se hace en services/users.service.ts
 
-## Running end-to-end tests
+```
+ 1. // private apiUrl = 'http://localhost:5500/api/users'; // url local
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ 2. private apiUrl = 'https://backend-sistema.onrender.com/api/users'; // url desplegada
 
-## Further help
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+Para correr el proyecto de debe iniciar los siguientes comando
+```
+npm install
+ng serve
+```
+
