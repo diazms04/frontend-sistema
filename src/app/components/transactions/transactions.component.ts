@@ -42,11 +42,14 @@ export class TransactionsComponent implements OnInit {
 
   loadTransactions() {
     if (this.userId) {
-      this.transactionService.getTransactionsByUser(this.userId).subscribe(data => {
-        this.transactions = data; // Cargar las transacciones del usuario
-      }, error => {
-        console.error('Error al cargar las transacciones:', error);
-      });
+      this.transactionService.getTransactionsByUser(this.userId).subscribe(
+        (data) => {
+          this.transactions = data; // Cargar las transacciones del usuario
+        },
+        (error) => {
+          console.error('Error al cargar las transacciones:', error);
+        }
+      );
     }
   }
 
@@ -54,14 +57,17 @@ export class TransactionsComponent implements OnInit {
     if (this.transactionForm.valid) {
       console.log("Formulario enviado:", this.transactionForm.value); // Log del formulario
 
-      this.transactionService.createTransaction(this.transactionForm.value).subscribe((response) => {
-        this.transactions.push(response); // Añadir la transacción a la lista
-        this.transactionForm.reset(); // Resetear el formulario
-        // Recargar la página
-        location.reload();
-      }, (error) => {
-        console.error("Error al crear la transacción:", error); // Manejo de errores
-      });
+      this.transactionService.createTransaction(this.transactionForm.value).subscribe(
+        (response) => {
+          this.transactions.push(response); // Añadir la transacción a la lista
+          this.transactionForm.reset(); // Resetear el formulario
+          this.transactionForm.patchValue({ user_id: this.userId }); // Mantener el user_id en el formulario
+          this.loadTransactions(); // Recargar la lista sin recargar la página
+        },
+        (error) => {
+          console.error("Error al crear la transacción:", error); // Manejo de errores
+        }
+      );
     } else {
       console.log("Formulario no válido:", this.transactionForm.errors); // Log de errores
     }
