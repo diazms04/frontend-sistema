@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/dist/frontend/index.html"
+      "dest": "/dist/frontend/$1"
     }
   ]
 }
