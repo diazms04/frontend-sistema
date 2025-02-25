@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="form-container">
+        <h1>Lista de Usuarios</h1>
+        <form [formGroup]="userForm" (ngSubmit)="addUser()">
+            <input formControlName="name" placeholder="Nombre" required />
+            <div *ngIf="userForm.get('name')?.invalid && (userForm.get('name')?.dirty || userForm.get('name')?.touched)">
+                <small *ngIf="userForm.get('name')?.errors?.['required']">El nombre es obligatorio.</small>
+            </div>
+            <input formControlName="email" placeholder="Email" required />
+            <div *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">
+                <small *ngIf="userForm.get('email')?.errors?.['required']">El correo es obligatorio.</small>
+                <small *ngIf="userForm.get('email')?.errors?.['email']">El correo no es válido.</small>
+            </div>
+            <button type="submit">Crear Usuario</button>
+        </form>
+    </div>
+    <div class="list-container">
+        <ul>
+            <li *ngFor="let user of users">
+                <div class="user-info">
+                    <span>{{ user.name }}</span>
+                    <span>{{ user.email }}</span>
+                </div>
+                <button (click)="viewTransactions(user.id)">Ver Transacciones</button>
+            </li>
+        </ul>
+    </div>
+</div>

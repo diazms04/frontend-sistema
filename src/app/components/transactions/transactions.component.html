@@ -1,0 +1,38 @@
+<div class="transactions-container">
+    <h2>Transacciones</h2>
+
+    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()" class="transaction-form">
+        <label for="amount">Cantidad:</label>
+        <input id="amount" formControlName="amount" type="number" required placeholder="Ingrese la cantidad">
+
+        <label for="type">Tipo:</label>
+        <select id="type" formControlName="type" required>
+            <option value="">Seleccione</option>
+            <option value="deposit">Depósito</option>
+            <option value="withdrawal">Retiro</option>
+        </select>
+
+        <button type="submit" [disabled]="transactionForm.invalid">Agregar Transacción</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuario ID</th>
+                <th>Cantidad</th>
+                <th>Tipo</th>
+                <th>Fecha de Creación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactions">
+                <td>{{ transaction.id }}</td>
+                <td>{{ transaction.user_id }}</td>
+                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.type }}</td>
+                <td>{{ transaction.created_at | date: 'short' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
