@@ -23,7 +23,7 @@ Sistema de transacciones desarrollado con **Angular**, estructurado con componen
 El proyecto esta consumiendo la base de datos de producción
 Si se desea correr con la base de datos local hay que hacer lo siguiente
 
-En services/transactions.service.ts hay que descomentar la primera linea y comentar la segunda
+En ```services/transactions.service.ts``` hay que descomentar la primera linea y comentar la segunda
 ```
 1. // private apiUrl = 'http://localhost:5500/api/transactions'; // url api local
   
@@ -31,7 +31,7 @@ En services/transactions.service.ts hay que descomentar la primera linea y comen
 
 ```
 
-Lo mismo se hace en services/users.service.ts
+Lo mismo se hace en ```services/users.service.ts``` descomentar la primera linea y comentar la segunda
 
 ```
  1. // private apiUrl = 'http://localhost:5500/api/users'; // url local
