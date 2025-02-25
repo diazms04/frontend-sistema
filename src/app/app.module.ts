@@ -11,7 +11,7 @@ import { UsersComponent } from '../app//components/users/users.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule // Asegúrate de que esté aquí
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
