@@ -41,7 +41,7 @@ Lo mismo se hace en ```services/users.service.ts``` descomentar la primera linea
 ```
 
 
-Para correr el proyecto de debe iniciar los siguientes comando
+Para correr el proyecto de deben iniciar los siguientes comando
 ```
 npm install
 ng serve
